@@ -1,0 +1,12 @@
+# Ignore big data folders
+data/
+models/
+samples/
+results/
+
+# Ignore system and Python files
+__pycache__/
+*.pyc
+*.pkl
+*.joblib
+*.log
