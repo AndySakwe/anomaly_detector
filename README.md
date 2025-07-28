@@ -38,9 +38,6 @@ Anomaly detection/
 ├── README.md # This file
 └── setup.py # Installable CLI tool config
 
-yaml
-Copy
-Edit
 
 ---
 
@@ -48,108 +45,68 @@ Edit
 
 1. **Clone the repository**:
 
-```bash
 git clone https://github.com/AndySakwe/anomaly_detector.git
 cd anomaly_detector
-Create and activate a virtual environment (recommended):
 
-bash
-Copy
-Edit
+2. Create and activate a virtual environment (recommended):
+
 python -m venv venv
 source venv/bin/activate  # Linux
 venv\Scripts\activate     # Windows
-Install dependencies:
 
-bash
-Copy
-Edit
+3.Install dependencies:
+
 pip install -r requirements.txt
-🚀 Usage
-🧠 Train the model
-Train a hybrid Random Forest + Isolation Forest model on labeled data:
 
-bash
-Copy
-Edit
+🚀 Usage
+1.🧠 Train the model
+
+Train a hybrid Random Forest + Isolation Forest model on labeled data:
 python main.py --mode train
 This will:
-
 Load .csv files from data/
-
 Preprocess and sample memory-efficiently
-
 Train the model
 
 Save:
-
 models/rf_model.joblib
-
 models/scaler.pkl
-
 models/if_model.joblib
-
 models/feature_columns.pkl
-
 Generate a confusion matrix and save it to results/
 
-📈 Predict from CSV
+2.📈 Predict from CSV
 Predict anomalies from any new file:
 
-bash
-Copy
-Edit
 python main.py --mode predict --input path/to/your.csv
 Output includes:
-
 Predicted class (BENIGN, ANOMALY, UDP, etc.)
-
 Confidence score (0-100%)
-
 Severity
-
 Explanation (e.g., "Likely UDP flood: High packet rate, low variance")
-
 CSV of predictions saved to results/predictions.csv
-
 Plaintext report saved to results/report.txt
 
-🧠 Supported Attack Classes
+3.🧠 Supported Attack Classes
 Grouped into classes to reduce noise:
-
 DrDoS: DNS, LDAP, MSSQL, NTP, etc.
-
 UDP: UDP attacks including lag and flooding
-
 TFTP: Trivial File Transfer Protocol
-
 BENIGN: Normal traffic
-
 ANOMALY: Any unknown or suspicious behavior
 
 🧪 Dataset Instructions
 The tool is compatible with CIC-DDoS2019 and any CSV file with numerical features and a Label or GroupLabel column.
 
 Important:
-
 Do not upload raw datasets to GitHub (use .gitignore)
-
 Place them inside data/
-
 Each file should be clean and standardized (handled by script)
 
 🛠 Install as CLI Tool
 Convert the project to a Linux-wide CLI tool:
-
-bash
-Copy
-Edit
 pip install .
 Then use anywhere:
-
-bash
-Copy
-Edit
 anomaly-detector --mode predict --input your.csv
 
 🤝 Contribution Guide
@@ -173,17 +130,12 @@ This project is licensed under the MIT License. You are free to modify, distribu
 🙏 Acknowledgments
 CIC-DDoS2019 Dataset by Canadian Institute for Cybersecurity
 
-Scikit-learn, XGBoost, NumPy, pandas
-
 GitHub for version control and collaboration
 
-This User — for taking cybersecurity seriously
+The User — for taking cybersecurity seriously
 
 💬 Support
 If you encounter issues or have questions:
-
 Create an issue on GitHub
-
 Or email uwuaandrew@gmail.com
-
 This project is a practical and scalable solution for anomaly detection and can be integrated into larger cybersecurity pipelines or used for academic research.
